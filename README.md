@@ -1,27 +1,50 @@
-Automating AWS Infrastructure with Terraform
-https://github.com/user-attachments/assets/1fdd7b81-69bd-45de-8ac7-7f5edcef2404
+# 🚀 Automating AWS Infrastructure with Terraform
 
-Konfigurasi Terraform untuk membuat VPC dengan 3 public subnet dan 3 private subnet di 3 Availability Zones (ap-southeast-3a, 3b, 3c) lengkap dengan Internet Gateway dan NAT Gateway.
+Repository ini berisi konfigurasi **Terraform** untuk membangun **VPC 3-tier architecture** di **AWS** dengan 3 Availability Zones (AZ). Infrastruktur ini memudahkan deployment aplikasi yang membutuhkan isolasi jaringan dan skalabilitas.
 
-Komponen
-VPC: 10.1.0.0/16
+---
+<img width="964" height="694" alt="arsitektur" src="https://github.com/user-attachments/assets/d6a5a11d-8e51-41f4-b56f-c7fc96cfca85" />
 
-3 Public Subnet: 10.1.1.0/24, 10.1.2.0/24, 10.1.3.0/24
+## 📋 Deskripsi
 
-3 Private Subnet: 10.1.11.0/24, 10.1.12.0/24, 10.1.13.0/24
+Arsitektur ini mencakup:
 
-Internet Gateway
+- 1 VPC dengan CIDR **10.1.0.0/16**
+- 3 Public Subnets (a, b, c) dengan akses internet via **Internet Gateway (IGW)**
+- 3 Private Subnets (a, b, c) dengan akses internet via **NAT Gateway**
+- 1 Internet Gateway
+- 1 NAT Gateway di Public Subnet A
+- Route Tables untuk Public & Private Subnets dengan asosiasi yang tepat
 
-NAT Gateway (di Public Subnet A)
+> Catatan: NAT Gateway menggunakan satu instance, sehingga merupakan single point of failure. 
 
-Route tables (public & private)
+---
 
-Cara Penggunaan
-bash
+## 🛠️ Prasyarat
+
+Pastikan environment sudah siap:
+
+- Terraform **v1.0+**
+- AWS CLI sudah dikonfigurasi
+- IAM user dengan akses **VPC & EC2**
+
+---
+
+## 🚀 Cara Penggunaan
+
+```bash
+# Clone repository
+git clone https://github.com/username/Automating-AWS-Infrastructure-with-Terraform.git
+cd Automating-AWS-Infrastructure-with-Terraform
+
+# Inisialisasi Terraform
 terraform init
-terraform plan
-terraform apply
-Catatan
-NAT Gateway akan dikenakan biaya per jam
 
-Jalankan terraform destroy jika infrastruktur tidak lagi digunakan
+# Review rencana
+terraform plan
+
+# Terapkan konfigurasi
+terraform apply
+
+# Hapus resource (jika tidak digunakan)
+terraform destroy

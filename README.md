@@ -1,43 +1,27 @@
-🚀 Automating AWS Infrastructure with Terraform
+Automating AWS Infrastructure with Terraform
 https://github.com/user-attachments/assets/1fdd7b81-69bd-45de-8ac7-7f5edcef2404
 
-📋 Deskripsi
-Repository ini berisi konfigurasi Terraform untuk membangun VPC dengan arsitektur 3-tier di 3 Availability Zones (AZ) pada AWS.
+Konfigurasi Terraform untuk membuat VPC dengan 3 public subnet dan 3 private subnet di 3 Availability Zones (ap-southeast-3a, 3b, 3c) lengkap dengan Internet Gateway dan NAT Gateway.
 
-🏗️ Komponen
-1 VPC (10.1.0.0/16)
+Komponen
+VPC: 10.1.0.0/16
 
-3 Public Subnets (a, b, c) dengan akses internet via IGW
+3 Public Subnet: 10.1.1.0/24, 10.1.2.0/24, 10.1.3.0/24
 
-3 Private Subnets (a, b, c) dengan akses internet via NAT Gateway
+3 Private Subnet: 10.1.11.0/24, 10.1.12.0/24, 10.1.13.0/24
 
-1 Internet Gateway (IGW)
+Internet Gateway
 
-1 NAT Gateway di Public Subnet A
+NAT Gateway (di Public Subnet A)
 
-Route Tables (Public & Private) dengan asosiasi yang sesuai
+Route tables (public & private)
 
-🛠️ Prasyarat
-Terraform v1.0+
-
-AWS CLI terkonfigurasi
-
-IAM user dengan akses VPC & EC2
-
-🚀 Cara Penggunaan
+Cara Penggunaan
 bash
-# Clone repository
-git clone https://github.com/username/Automating-AWS-Infrastructure-with-Terraform.git
-cd Automating-AWS-Infrastructure-with-Terraform
-
-# Inisialisasi Terraform
 terraform init
-
-# Review rencana
 terraform plan
-
-# Apply konfigurasi
 terraform apply
+Catatan
+NAT Gateway akan dikenakan biaya per jam
 
-# Hapus resource (jika tidak digunakan)
-terraform destroy
+Jalankan terraform destroy jika infrastruktur tidak lagi digunakan

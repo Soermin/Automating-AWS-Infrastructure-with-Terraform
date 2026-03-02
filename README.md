@@ -48,3 +48,18 @@ terraform apply
 
 # Hapus resource (jika tidak digunakan)
 terraform destroy
+```bash
+
+##⚠️ Catatan Penting
+
+NAT Gateway menimbulkan biaya per jam + biaya Elastic IP (EIP)
+
+Jalankan terraform destroy jika resource tidak digunakan untuk menghindari biaya
+
+Region default: ap-southeast-3 (Jakarta)
+
+##📚 Referensi
+
+AWS VPC Documentation
+
+Terraform AWS Provider

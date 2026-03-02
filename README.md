@@ -51,7 +51,7 @@ terraform destroy
 
 ```
 
-##⚠️ Catatan Penting
+## ⚠️ Catatan Penting
 
 NAT Gateway menimbulkan biaya per jam + biaya Elastic IP (EIP)
 
@@ -59,7 +59,7 @@ Jalankan terraform destroy jika resource tidak digunakan untuk menghindari biaya
 
 Region default: ap-southeast-3 (Jakarta)
 
-##📚 Referensi
+## 📚 Referensi
 
 AWS VPC Documentation
 

@@ -1,66 +1,59 @@
 # 🚀 Automating AWS Infrastructure with Terraform
 
-Repository ini berisi konfigurasi **Terraform** untuk membangun **VPC 3-tier architecture** di **AWS** dengan 3 Availability Zones (AZ). Infrastruktur ini memudahkan deployment aplikasi yang membutuhkan isolasi jaringan dan skalabilitas.
+This repository contains Terraform configurations to provision a 3-tier VPC architecture on AWS across 3 Availability Zones (AZs). The infrastructure is designed to support applications that require network isolation, scalability, and structured deployment environments.
 
 ---
 <img width="964" height="694" alt="arsitektur" src="https://github.com/user-attachments/assets/d6a5a11d-8e51-41f4-b56f-c7fc96cfca85" />
 
-## 📋 Deskripsi
+## 📋 Description
 
-Arsitektur ini mencakup:
-
-- 1 VPC dengan CIDR **10.1.0.0/16**
-- 3 Public Subnets (a, b, c) dengan akses internet via **Internet Gateway (IGW)**
-- 3 Private Subnets (a, b, c) dengan akses internet via **NAT Gateway**
+This architecture includes:
+- 1 VPC with CIDR block 10.1.0.0/16
+- 3 Public Subnets (a, b, c) with internet access via Internet Gateway (IGW)
+- 3 Private Subnets (a, b, c) with outbound internet access via NAT Gateway
 - 1 Internet Gateway
-- 1 NAT Gateway di Public Subnet A
-- Route Tables untuk Public & Private Subnets dengan asosiasi yang tepat
+- 1 NAT Gateway deployed in Public Subnet A
+- Properly configured Route Tables for both Public and Private Subnets
 
-> Catatan: NAT Gateway menggunakan satu instance, sehingga merupakan single point of failure. 
-
----
-
-## 🛠️ Prasyarat
-
-Pastikan environment sudah siap:
-
-- Terraform **v1.0+**
-- AWS CLI sudah dikonfigurasi
-- IAM user dengan akses **VPC & EC2**
+Note: The NAT Gateway is deployed as a single instance, which introduces a single point of failure.
 
 ---
 
-## 🚀 Cara Penggunaan
+## 🛠️ Prerequisites
+
+Make sure your environment is properly configured:
+- Terraform v1.0+
+- AWS CLI configured with valid credentials
+- IAM user with VPC & EC2 permissions
+
+---
+
+## 🚀 Usage
 
 ```bash
-# Clone repository
+# Clone the repository
 git clone https://github.com/username/Automating-AWS-Infrastructure-with-Terraform.git
 cd Automating-AWS-Infrastructure-with-Terraform
 
-# Inisialisasi Terraform
+# Initialize Terraform
 terraform init
 
-# Review rencana
+# Review execution plan
 terraform plan
 
-# Terapkan konfigurasi
+# Apply configuration
 terraform apply
 
-# Hapus resource (jika tidak digunakan)
+# Destroy resources (if no longer needed)
 terraform destroy
 
 ```
 
-## ⚠️ Catatan Penting
+## ⚠️ Important Notes
+- NAT Gateway incurs hourly charges plus Elastic IP (EIP) costs.
+- Run terraform destroy when resources are not in use to avoid unnecessary charges.
+- Default region: ap-southeast-3 (Jakarta)
 
-NAT Gateway menimbulkan biaya per jam + biaya Elastic IP (EIP)
-
-Jalankan terraform destroy jika resource tidak digunakan untuk menghindari biaya
-
-Region default: ap-southeast-3 (Jakarta)
-
-## 📚 Referensi
-
-AWS VPC Documentation
-
-Terraform AWS Provider
+## 📚 References
+- AWS VPC Documentation
+- Terraform AWS Provider

@@ -48,7 +48,8 @@ terraform apply
 
 # Hapus resource (jika tidak digunakan)
 terraform destroy
-```bash
+
+```
 
 ##⚠️ Catatan Penting
 
